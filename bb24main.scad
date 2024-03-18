@@ -5,8 +5,7 @@
 // TODO: test a single leg by putting the "beam" hoops for the other leg onto some vertical pole
 // TODO: will the gears fit within "fw" parameter - measure gear width
 // TODO: add tolerances to all holes
-// TODO: gears with a disk on the bottom have about 1.5mm overhang and will not print as is - add support
-// TODO: create a module combining gears and disks
+// TODO: gears with a disk on the bottom have about 1.5mm overhang and will not print as is. Add support
 
 include <BOSL2/std.scad>
 include <BOSL2/gears.scad>
@@ -61,34 +60,37 @@ module bearing_assembly(x,y,az){
 }
 
 
-/*
-// These are a bunch of gears, disks, shafts and bearing for visualization
-dgear(12.5,0,0);
-dgear(41,0,180);
-dgear(27,20,-90);
+if ($preview) { // do not show this stuff during rendering
+    // These are a bunch of gears, disks, shafts and bearing for visualization
+    dgear(12.5,0,0);
+    dgear(41,0,180);
+    dgear(27,20,-90);
 
-dgear(27,69,90);
-dgear(27,100,-90);
-dgear(46,85,180);
+    dgear(27,69,90);
+    dgear(27,100,-90);
+    dgear(46,85,180);
 
-disk(9,0,0);
-disk(43,0,0);
-disk(27,65,90);
-disk(27,103,90);
+    disk(11,0,0);
+    disk(43,0,0);
+    disk(27,67,90);
+    disk(27,102,90);
 
-bearing_assembly(-24,0,0);
-shaft(-24,0,0,34);
-*/
+    bearing_assembly(-24,0,0);
+    shaft(-24,0,0,34);
+} // if($preview)
 
 
-// TODO: use "if not $preview" to separate parts
-// separated for printing.  Comment out to visualize
-// translate([0,20,0])
-bracket_connector();
+if($preview) { // F5 = preview, F6 = render
+    bracket_connector();
+} else { // separate parts for printing when rendered
+    translate([0,0,20]) bracket_connector();
+}
 bracket();
 translate([fw+16+1,0,0]) bracket();
 
-frame();
-// hollow_shaft print supports for frame()
-translate([27,108,0]) sq_tube(6, 2, 3, 0.3);
-translate([27,64,0]) sq_tube(6, 2, 3, 0.3);
+
+frame(); // main frame of the robot
+if(!$preview){ // when rendering add print supports for hollow_shaft() in frame()
+    translate([27,108,0]) sq_tube(6, 2, 3, 0.3);
+    translate([27,64,0]) sq_tube(6, 2, 3, 0.3);
+}

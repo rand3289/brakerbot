@@ -9,7 +9,7 @@ fw = 54; // frame width
 fl = 16+disk_od+3; // frame length
 
 hole_tolerance = 0.1;
-round_wall_thick=1.5;
+pipe_wall_thick=1.5;
 
 bearing_od=22; // 608 bearing outer diameter
 

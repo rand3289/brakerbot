@@ -1,8 +1,9 @@
 include <BOSL2/std.scad> // tube()
 include <bb24const.scad>
 
-beam_id = bearing_od + 2*round_wall_thick + 2*hole_tolerance;
-beam_od = beam_id+2*round_wall_thick;
+beam_id = bearing_od + 2*pipe_wall_thick + 2*hole_tolerance;
+beam_od = beam_id+2*pipe_wall_thick;
+
 
 module beam(){
     color("purple") union(){

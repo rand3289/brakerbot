@@ -11,7 +11,7 @@ module bearing_block(x, y, az, second_hole = true){
     translate([x,y,8]) rotate([0,-90,az]) difference() {
         intersection() {
             difference(){
-                cylinder(34, d=(bearing_od+2*round_wall_thick)); // outer cylinder
+                cylinder(34, d=(bearing_od+2*pipe_wall_thick)); // outer cylinder
                 translate([0,0,2]) cylinder(30, d=bearing_od+2*hole_tolerance);
             }
             translate([-8,-15,-1]) cube([height, 30, 36], false); // cutoff part of cylinder
