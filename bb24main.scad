@@ -1,6 +1,4 @@
 // Breaker Bot 2024 toandrey(at)yahoo(dot)com
-// I found it easier to edit scad file using vscode with "Open Scad Language Support" extension.
-// OpenSCAD automatically renders previews of individual modules or project when files are saved.
 //
 // TODO: test a single leg by putting the "beam" hoops for the other leg onto some vertical pole
 // TODO: will the gears fit within "fw" parameter - measure gear width

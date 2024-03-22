@@ -1,11 +1,11 @@
 // Breaker Bot 2024 toandrey(at)yahoo(dot)com
-include <BOSL2/std.scad>
-include <misc.scad>
+include <BOSL2/std.scad> // tube()
 include <bb24const.scad>
+include <misc.scad>
 
 
 // bearing block for 2 bearings and a shaft through it
-module bearing_block(x, y, az, second_hole = true){
+module bearing_block(x, y, az, second_hole = true){ // static
     full_arch = false;
     height = full_arch ? 24 : 16;
     translate([x,y,8]) rotate([0,-90,az]) difference() {
@@ -23,7 +23,7 @@ module bearing_block(x, y, az, second_hole = true){
 
 
 // Make a hole and then add a bearing_block()
-module bearing_block_install(x, y, az, second_hole=true){
+module bearing_block_install(x, y, az, second_hole=true){ // static
     union(){
         difference(){
             union(){ children(); }
@@ -34,7 +34,7 @@ module bearing_block_install(x, y, az, second_hole=true){
 }
 
 
-module cframe(x,y,az,width = 54){ // C shaped frame
+module cframe(x,y,az,width = 54){ // C shaped frame // static
     length = 56;
     // unlike other pieces frame is not translated 8 up
     color([1,0,0])  translate([x,y,0])  rotate([0,0,az])  difference(){
@@ -44,12 +44,12 @@ module cframe(x,y,az,width = 54){ // C shaped frame
 }
 
 
-module hollow_shaft(x,y,az){
+module hollow_shaft(x,y,az){ // static
     translate([x,y,8]) rotate([0,90,az]) tube(h=8, od=12, id=shaft_round+1);
 }
 
 
-module frame(){
+module frame(){ // public
 difference(){
     bearing_block_install(8,0,0,false)
     bearing_block_install(46,0,180)

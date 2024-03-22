@@ -1,3 +1,4 @@
+// Breaker Bot 2024 toandrey(at)yahoo(dot)com
 include <BOSL2/std.scad> // tube()
 include <bb24const.scad>
 
@@ -5,7 +6,7 @@ beam_id = bearing_od + 2*pipe_wall_thick + 2*hole_tolerance;
 beam_od = beam_id+2*pipe_wall_thick;
 
 
-module beam(){
+module beam(){ // static
     color("purple") union(){
         translate([-16,0,8]) rotate([0,90,0])
             tube(h=16,od=beam_od,id=beam_id,center=false);
@@ -17,7 +18,7 @@ module beam(){
 
 
 // connector between the brackets
-module bracket_connector(){
+module bracket_connector(){ // public
 translate([-16,-83,4]) 
 difference() {
     union(){
@@ -27,11 +28,11 @@ difference() {
     }
     translate([-1,8,4]) rotate([0,90,0]) cylinder(fw*2,2,2); // screw hole
 }
-} // bracket_connector()
+}
 
 
 // In theory brackets should be functions of fw (frame width) and fl (frame length)
-module bracket(){
+module bracket(){ // public
     difference(){
         union(){
             translate([0,-75,8]) rotate([0,-90,0]) scale([0.5,1.5]) cylinder(d=25,h=16);
@@ -39,4 +40,4 @@ module bracket(){
         }
         translate([-17,-(bl+28.1),3.9]) cube([18,14.2,8.2]);
     }
-} // bracket()
+}

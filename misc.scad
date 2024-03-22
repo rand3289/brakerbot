@@ -1,7 +1,8 @@
-// generic modules
+// generic public modules
 
 module t(x,y,z){ translate([x,y,z]) children(); }
 module r(x,y,z){ rotate([x,y,z]) children(); }
+
 module flipx(){ rotate([90,0,0]) children(); }
 module flipy(){ rotate([0,90,0]) children(); }
 module flipz(){ rotate([0,0,90]) children(); }
