@@ -96,3 +96,6 @@ if(!$preview){ // when rendering add print supports for hollow_shaft() in frame(
 
 color("grey") translate([-180,76,0]) thigh();
 translate([-172,80,-16]) rotate([90,0,180]) shin();
+
+translate([-30,60,0]) hip();
+translate([-210,80,18]) pushrod();

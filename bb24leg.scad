@@ -42,15 +42,37 @@ module thigh(){ // public
 
 
 module hip(){ // public
+    difference(){
+        union(){
+            translate([0,0,0]) cube([fl/2+8,fw,16]);
+        }
+        translate([8,4,-1]) cube([fl/2+8,fw-8,18]);
+        translate([fl/2,-1,8]) rotate([-90,0,0]) cylinder(fw+12,6,6);
+    }
+    difference(){
+        translate([-4,fw/2-4,0]) cube([16, 8, 32]);
+        translate([4,0,24]) rotate([-90,0,0]) cylinder(fw,4,4);
+    }
 }
 
 
 module pushrod(){ // public
-    cube([thigh_len+knee_offset,8,12]);
+    len = thigh_len+knee_offset-16;
+    difference(){
+        union(){
+            cube([len,8,12]);
+            translate([-16,-4,0]) cube([20,16,12]);
+            translate([len-4,-4,0]) cube([20,16,12]);
+        }
+        translate([-20,0,-1]) cube([20,8,14]);
+        translate([len,0,-1]) cube([20,8,14]);
+        translate([-8,-8,6]) rotate([-90,0,0]) %cylinder(24,4,4);
+        translate([len+8,-8,6]) rotate([-90,0,0]) %cylinder(24,4,4);
+    }
 }
 
 
 translate([-16,12,8]) flipy() flipx() shin();
 thigh();
-hip();
-translate([0,0, 40]) pushrod();
+translate([200,-20, 30]) hip();
+translate([0,4, 48]) pushrod();
