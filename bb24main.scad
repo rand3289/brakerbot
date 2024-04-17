@@ -11,6 +11,7 @@ include <bb24const.scad>
 use <misc.scad>
 use <bb24bracket.scad>
 use <bb24frame.scad>
+use <bb24leg.scad>
 
 
 // operator module "TranslateRotate" to place a component on the x-y plane
@@ -92,3 +93,6 @@ if(!$preview){ // when rendering add print supports for hollow_shaft() in frame(
     translate([27,108,0]) sq_tube(6, 2, 3, 0.3);
     translate([27,64,0]) sq_tube(6, 2, 3, 0.3);
 }
+
+color("grey") translate([-180,76,0]) thigh();
+translate([-172,80,-16]) rotate([90,0,180]) shin();

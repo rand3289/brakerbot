@@ -31,10 +31,9 @@ module thigh(){ // public
     difference(){
         union(){
             cube([thigh_len, 16,16]);
-            translate([thigh_len, -(fw/2-4), 0]) cube([8, fw+8,16]);
-            translate([thigh_len, -(fw/2-4), 0]) cube([fl/2+8, 4,16]);
-            translate([thigh_len,  (fw/2+8), 0]) cube([fl/2+8, 4,16]);
+            translate([thigh_len, 8-fw/2, 0]) cube([fl/2+8,fw,16]);
         }
+        translate([thigh_len+8, 12-fw/2, -1]) cube([fl/2+8,fw-8,18]);
         translate([-1,4,-1]) cube([19,8,18]);
         translate([8,17,8]) flipx() cylinder(20,4,4);
         translate([thigh_len+fl/2,fw/2+14,8]) flipx() cylinder(fw+12,6,6);
