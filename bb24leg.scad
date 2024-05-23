@@ -66,8 +66,8 @@ module pushrod(){ // public
         }
         translate([-20,0,-1]) cube([20,8,14]);
         translate([len,0,-1]) cube([20,8,14]);
-        translate([-8,-8,6]) rotate([-90,0,0]) %cylinder(24,4,4);
-        translate([len+8,-8,6]) rotate([-90,0,0]) %cylinder(24,4,4);
+        translate([-8,-8,6]) rotate([-90,0,0]) cylinder(24,4,4);
+        translate([len+8,-8,6]) rotate([-90,0,0]) cylinder(24,4,4);
     }
 }
 
