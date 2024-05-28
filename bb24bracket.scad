@@ -6,17 +6,6 @@ beam_id = bearing_od + 2*pipe_wall_thick + 2*hole_tolerance;
 beam_od = beam_id+2*pipe_wall_thick;
 
 
-module beam(){ // static
-    color("purple") union(){
-        translate([-16,0,8]) rotate([0,90,0])
-            tube(h=16,od=beam_od,id=beam_id,center=false);
-        translate([-16,-(bl+bl+13+16),4]) cube([16,bl+16+bl,8]);
-        translate([-16,-(bl+16+bl+26),8]) rotate([0,90,0])
-            tube(h=16,od=beam_od,id=beam_id,center=false);
-    }
-}
-
-
 // connector between the brackets
 module bracket_connector(){ // public
     difference() {
@@ -34,7 +23,9 @@ module bracket(){ // public
     difference(){
         union(){
             translate([0,-75,8]) rotate([0,-90,0]) scale([0.5,1.5]) cylinder(d=25,h=16);
-            beam(); // lower bracket
+            translate([-16,0,8]) rotate([0,90,0]) tube(h=16,od=beam_od,id=beam_id,center=false);
+            translate([-16,-(bl+bl+13+16),4]) cube([16,bl+16+bl,8]);
+            translate([-16,-(bl+16+bl+26),8]) rotate([0,90,0]) tube(h=16,od=beam_od,id=beam_id,center=false);
         }
         translate([-17,-(bl+28.1),3.9]) cube([18,14.2,8.2]);
     }

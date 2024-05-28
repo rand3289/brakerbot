@@ -6,8 +6,6 @@ knee_offset = 40;
 thigh_len = 150;
 
 
-/////////////////////// public modules ///////////////////////
-
 module shin(){ // public
     difference(){
         union(){
@@ -45,12 +43,10 @@ module hip(){ // public
     difference(){
         union(){
             translate([0,0,0]) cube([fl/2+8,fw,16]);
+            translate([-4,fw/2-4,0]) cube([16, 8, 32]);
         }
         translate([8,4,-1]) cube([fl/2+8,fw-8,18]);
         translate([fl/2,-1,8]) rotate([-90,0,0]) cylinder(fw+12,6,6);
-    }
-    difference(){
-        translate([-4,fw/2-4,0]) cube([16, 8, 32]);
         translate([4,0,24]) rotate([-90,0,0]) cylinder(fw,4,4);
     }
 }
