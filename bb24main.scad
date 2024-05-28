@@ -14,29 +14,28 @@ use <bb24misc.scad>
 
 
 // operator module "TranslateRotate" to place a component on the x-y plane
-module tr(x, y, az, rotate_forward=false, z=8){
-    ay = rotate_forward ? 90 : 0;
-    translate([x,y,z]) rotate([0,ay,az]) children();
+module tr(x, y, az){
+    translate([x,y,8]) rotate([0,90,az]) children();
 }
 
 
 if ($preview) { // do not show this stuff during rendering
     // These are a bunch of gears, disks, shafts and bearing for visualization
-    tr(12.5,0,0,true)  dgear();
-    tr(41,0,180,true)  dgear();
-    tr(27,20,-90,true) dgear();
+    tr(12.5,0,0)  dgear();
+    tr(41,0,180)  dgear();
+    tr(27,20,-90) dgear();
 
-    tr(27,69,90,true)   dgear();
-    tr(27,100,-90,true) dgear();
-    tr(46,85,180,true)  dgear();
+    tr(27,69,90)   dgear();
+    tr(27,100,-90) dgear();
+    tr(46,85,180)  dgear();
 
-    tr(11,0,0,true)    tube(h=disk_h, od=disk_od, id=disk_id); // disks
-    tr(43,0,0,true)    tube(h=disk_h, od=disk_od, id=disk_id);
-    tr(27,67,90,true)  tube(h=disk_h, od=disk_od, id=disk_id);
-    tr(27,102,90,true) tube(h=disk_h, od=disk_od, id=disk_id);
+    tr(11,0,0)    tube(h=disk_h, od=disk_od, id=disk_id); // disks
+    tr(43,0,0)    tube(h=disk_h, od=disk_od, id=disk_id);
+    tr(27,67,90)  tube(h=disk_h, od=disk_od, id=disk_id);
+    tr(27,102,90) tube(h=disk_h, od=disk_od, id=disk_id);
 
-    tr(-24,0,0, true) bearing_assembly();
-    tr(-24,0,0, true) color("yellow") shaft(34);
+    tr(-24,0,0) bearing_assembly();
+    tr(-24,0,0) color("yellow") shaft(34);
 } // if($preview)
 
 

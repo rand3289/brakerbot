@@ -30,3 +30,6 @@ module bracket(){ // public
         translate([-17,-(bl+28.1),3.9]) cube([18,14.2,8.2]);
     }
 }
+
+translate([-1,fw+28,-4]) bracket();
+bracket_connector();

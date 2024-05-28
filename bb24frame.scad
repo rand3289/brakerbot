@@ -5,7 +5,7 @@ include <misc.scad>
 
 
 // bearing block for 2 bearings and a shaft through it
-module bearing_block(second_hole = true){ // static
+module bearing_block(second_hole = true){ // private
     shaft_height = second_hole ? 36 : 10;
     full_arch = false;
     height = full_arch ? 24 : 16;
@@ -22,7 +22,7 @@ module bearing_block(second_hole = true){ // static
 
 
 // Make a hole and then add a bearing_block()
-module bearing_block_install(x, y, az, second_hole=true){ // static
+module bearing_block_install(x, y, az, second_hole=true){ // private
     union(){
         difference(){
             children();
@@ -33,7 +33,8 @@ module bearing_block_install(x, y, az, second_hole=true){ // static
 }
 
 
-module cframe(){ // C shaped frame // static
+// C shaped frame
+module cframe(){ // private
     width = 74;
     length = 56;
     difference(){
@@ -43,7 +44,8 @@ module cframe(){ // C shaped frame // static
 }
 
 
-module angle(){ // static // angle for stiffness
+// angle for stiffness
+module angle(){ // private
     alen=90;
     difference(){
         cube([alen,alen,16]);
@@ -52,7 +54,7 @@ module angle(){ // static // angle for stiffness
 }
 
 
-module frame_no_blocks(){ // public
+module frame_no_blocks(){ // private
     difference(){
         union(){
             translate([fw/2,  0, 0]) sq_tube(fw,fl,16,8);
@@ -69,7 +71,7 @@ module frame_no_blocks(){ // public
 }
 
 
-module frame() {
+module frame() { // public
     bearing_block_install(8,0,0,false)
     bearing_block_install(46,0,180)
     bearing_block_install(fw/2,57,90) // shared

@@ -37,3 +37,5 @@ module bearing_assembly(){ // public
 
 
 dgear();
+translate([50,0,0]) shaft(20);
+translate ([-50,0,0]) bearing_assembly();
