@@ -19,15 +19,13 @@ module beam(){ // static
 
 // connector between the brackets
 module bracket_connector(){ // public
-translate([-16,-83,4]) 
-difference() {
-    union(){
-        translate([0,1,0])  cube([fw+1+2*16,14,8]);
-        translate([16,0,0]) cube([fw+1,16,8]);
-//        translate([30,12,0.5]) rotate([180,0,0]) color("red") text("part1");
+    difference() {
+        union(){
+            translate([0,1,0])  cube([fw+1+2*16,14,8]);
+            translate([16,0,0]) cube([fw+1,16,8]);
+        }
+        translate([-1,8,4]) rotate([0,90,0]) cylinder(fw*2,2,2); // screw hole
     }
-    translate([-1,8,4]) rotate([0,90,0]) cylinder(fw*2,2,2); // screw hole
-}
 }
 
 

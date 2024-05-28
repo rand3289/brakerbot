@@ -80,9 +80,9 @@ if ($preview) { // do not show this stuff during rendering
 
 
 if($preview) { // F5 = preview, F6 = render
-    bracket_connector();
+    translate([-16,-83,4]) bracket_connector();
 } else { // separate parts for printing when rendered
-    translate([0,0,20]) bracket_connector();
+    translate([-16,-83,24]) bracket_connector();
 }
 bracket();
 translate([fw+16+1,0,0]) bracket();
