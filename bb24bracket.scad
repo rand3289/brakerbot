@@ -13,7 +13,7 @@ module bracket_connector(){ // public
             translate([0,1,0])  cube([fw+1+2*16,14,8]);
             translate([16,0,0]) cube([fw+1,16,8]);
         }
-        translate([-1,8,4]) rotate([0,90,0]) cylinder(fw*2,2,2); // screw hole
+        translate([-1,8,4]) rotate([0,90,0]) cylinder(fw*2, d=4); // screw hole
     }
 }
 
@@ -22,7 +22,7 @@ module bracket_connector(){ // public
 module bracket(){ // public
     difference(){
         union(){
-            translate([0,-75,8]) rotate([0,-90,0]) scale([0.5,1.5]) cylinder(d=25,h=16);
+            translate([0,-75,8]) rotate([0,-90,0]) scale([0.5,1.5]) cylinder(16, d=25);
             translate([-16,0,8]) rotate([0,90,0]) tube(h=16,od=beam_od,id=beam_id,center=false);
             translate([-16,-(bl+bl+13+16),4]) cube([16,bl+16+bl,8]);
             translate([-16,-(bl+16+bl+26),8]) rotate([0,90,0]) tube(h=16,od=beam_od,id=beam_id,center=false);

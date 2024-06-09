@@ -16,7 +16,7 @@ module bearing_block(second_hole = true){ // private
             translate([-8,-15,-1]) cube([height, 30, 36], false); // cutoff part of cylinder
         }
         translate([0,0,2]) cylinder(30, d=bearing_od+2*hole_tolerance);
-        translate([0,0,-1]) cylinder(shaft_height,d=9); // shaft hole
+        translate([0,0,-1]) cylinder(shaft_height, d=9); // shaft hole
     }
 }
 
@@ -64,9 +64,9 @@ module frame_no_blocks(){ // private
             translate([53,22,0]) rotate([0,0,53]) angle();
         }
         // holes for attaching brakes
-        translate([23,-(fl/2-4),-1]) cylinder(h=18,d=3,center=false);
-        translate([31,-(fl/2-4),-1]) cylinder(h=18,d=3,center=false);
-        translate([27,-(fl/2-10),8]) rotate([90,0,0]) cylinder(h=12,d=3,center=false);
+        translate([23,-(fl/2-4),-1]) cylinder(18, d=3);
+        translate([31,-(fl/2-4),-1]) cylinder(18, d=3);
+        translate([27,-(fl/2-10),8]) rotate([90,0,0]) cylinder(12, d=3);
     }
 }
 

@@ -8,7 +8,7 @@ module shaft(length){ // public
     eh = 10; // square end height
     union(){
         translate([0,0,length+eh/2]) cube([shaft_square,shaft_square,eh],true);
-        cylinder(h=length,d=shaft_round,center=false);
+        cylinder(length,d=shaft_round);
     }
 }
 
@@ -19,7 +19,7 @@ module dgear(){ // public
     difference(){
         union(){
             translate([0,0,1.3]) bevel_gear(teeth=gteeth, mate_teeth=gteeth, mod=1.5, cutter_radius=0, spiral=0, shaft_diam=1);
-            translate([0,0,-disk_h]) cylinder(h=disk_h, d=disk_id, center=false);
+            translate([0,0,-disk_h]) cylinder(disk_h, d=disk_id);
         } // I don't know why the gear is 1.4 below z=0
         translate([0,0,-5]) cube([shaft_square,shaft_square,25], center=true);
     }
