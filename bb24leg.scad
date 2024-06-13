@@ -1,25 +1,22 @@
 // Breaker Bot 2024 toandrey(at)yahoo(dot)com
-include <bb24const.scad>
-
-knee_offset = 40;
-thigh_len = 150;
+use <misc.scad>
 
 
 module shin(){ // public
     difference(){
         union(){
-            cube([thigh_len,16,8]);
-            translate([-8,8,0]) cube([16,16,8]);
-            translate([knee_offset,8,0]) cube([16,32,8]);
+            b(150,16,8);
+            t(71,  4, 0) b(16, 16, 8);
+            t(31, 24, 0) b(16, 32, 8);
 
-            translate([0,8,0]) cylinder(8, d=16);
-            translate([thigh_len,8,0]) cylinder(8, d=16);
-            translate([0,24,0]) cylinder(8,8,8);
-            translate([knee_offset+8,40,0]) cylinder(8, d=16);
+            t(-75, 0, 0) c(8, 16);
+            t(71, 12, 0) c(8, 16);
+            t(31, 40, 0) c(8, 16);
+            t(75, -4, 0) c(8,  8);
         }
-        translate([0,24,-1]) cylinder(10, d=8);
-        translate([knee_offset+8,40,-1]) cylinder(10, d=8);
-        translate([thigh_len,8,-1]) cylinder(10, d=8);
+        t(71,12,0) c(10, 8);
+        t(31,40,0) c(10, 8);
+        t(-75,0,0) c(10, 8);
     }
 }
 
@@ -27,13 +24,13 @@ module shin(){ // public
 module thigh(){ // public
     difference(){
         union(){
-            cube([thigh_len, 16,16]);
-            translate([thigh_len, 8-fw/2, 0]) cube([fl/2+8,fw,16]);
+            b(150, 16,16);
+            t(107, 0, 0) b(64,54,16);
         }
-        translate([thigh_len+8, 12-fw/2, -1]) cube([fl/2+8,fw-8,18]);
-        translate([-1,4,-1]) cube([19,8,18]);
-        translate([8,17,8]) rotate([90,0,0]) cylinder(20, d=8);
-        translate([thigh_len+fl/2,fw/2+14,8]) rotate([90,0,0]) cylinder(fw+12, d=12);
+        t(115, 0, 0) b(64, 46, 18);
+        t(-66, 0, 0) b(19, 8, 18);
+        t(-66, 0, 0) r(90, 0, 0) c(20, 8);
+        t(130, 0, 0) r(90, 0, 0) c(56, 12);
     }
 }
 
@@ -41,34 +38,32 @@ module thigh(){ // public
 module hip(){ // public
     difference(){
         union(){
-            translate([0,0,0]) cube([fl/2+8,fw,16]);
-            translate([-4,fw/2-4,0]) cube([16, 8, 32]);
+            b(64, 54, 16);
+            t(-32, 0, 8) b(16, 8, 32);
         }
-        translate([8,4,-1]) cube([fl/2+8,fw-8,18]);
-        translate([fl/2,-1,8]) rotate([-90,0,0]) cylinder(fw+12, d=12);
-        translate([4,0,24]) rotate([-90,0,0]) cylinder(fw, d=8);
+        t(8, 0, 0) b(64, 46, 18);
+        t(24, 0, 0) r(-90, 0, 0) c(66, 12);
+        t(-32,0,16) r(-90, 0, 0) c(18, 8);
     }
 }
 
 
 module pushrod(){ // public
-    len = thigh_len+knee_offset-16;
     difference(){
         union(){
-            cube([len,8,12]);
-            translate([-16,-4,0]) cube([20,16,12]);
-            translate([len-4,-4,0]) cube([20,16,12]);
+%            b(174, 8, 12);
+            t(86, 0, 0) b(20,16,12);
+            t(-86, 0, 0) b(20, 16, 12);
         }
-        translate([-20,0,-1]) cube([20,8,14]);
-        translate([len,0,-1]) cube([20,8,14]);
-        translate([-8,-8,6]) rotate([-90,0,0]) cylinder(24, d=8);
-        translate([len+8,-8,6]) rotate([-90,0,0]) cylinder(24, d=8);
+        t(90, 0, 0) b(20, 8, 14);
+        t(-90, 0, 0) b(20, 8, 14);
+        t(90, 0, 0) r(-90, 0, 0) c(24, 8);
+        t(-90, 0, 0) r(-90, 0, 0) c(24, 8);
     }
 }
 
-
 // local file debugging only
-rotate([90,0,180]) shin();
+t(-160,0,0) r(90,0,0) shin();
 thigh();
-translate([200,-20, 30]) hip();
-translate([0,4, 48]) pushrod();
+t(110, 0, 30) hip();
+t(-30,0,50) pushrod();
