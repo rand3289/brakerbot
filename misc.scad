@@ -1,11 +1,12 @@
 // generic public modules
 
-/*
-// RotateTranslate().  Rotate by rx,ry,rz and translate by x,y,z.  Rotate is optional since rx,ry,rz default to 0.
-module rt(x,y,z,rx=0,ry=0,rz=0){ translate([x,y,z]) rotate([rx,ry,rz]) children(); }
-module t(x,y,z){ translate([x,y,z]) children(); }
-module r(x,y,z){ rotate([x,y,z]) children(); }
+module t(x,y,z){           translate([x,y,z]) children(); } // translate
+module r(ax,ay,az){        rotate([ax,ay,az]) children(); } // rotate
+module b(x,y,z){           cube([x,y,z],center=true); } // block (cube)
+module c(height,diameter){ cylinder(h=height, d=diameter, center=true); } // cylinder
+module s(diameter){        sphere(d=diameter); } // sphere
 
+/*
 module flipx(){ rotate([90,0,0]) children(); }
 module flipy(){ rotate([0,90,0]) children(); }
 module flipz(){ rotate([0,0,90]) children(); }
@@ -22,3 +23,8 @@ module sq_tube(length, width, height, wall){ // wall is wall thickness
         cube([length-2*wall, width-2*wall, height+2], true);
     }
 }
+
+
+color("red") s(100);
+c(100,50);
+b(100,100,50);

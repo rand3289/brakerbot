@@ -4,11 +4,10 @@ disk_id = 25;
 disk_od = 95;
 disk_h  = 1.25;
 
-bl = 54; // beam length
 fw = 54; // frame width
 fl = 16+disk_od+3; // frame length
 
-hole_tolerance = 0.1;
+radius_tolerance = 0.1;
 pipe_wall_thick=1.5;
 
 bearing_od=22; // 608 bearing outer diameter

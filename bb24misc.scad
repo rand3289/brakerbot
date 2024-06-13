@@ -1,3 +1,4 @@
+// Breaker Bot 2024 toandrey(at)yahoo(dot)com
 include <BOSL2/std.scad>
 include <BOSL2/gears.scad>
 include <bb24const.scad>

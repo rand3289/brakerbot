@@ -1,7 +1,7 @@
 // Breaker Bot 2024 toandrey(at)yahoo(dot)com
 include <BOSL2/std.scad> // tube()
 include <bb24const.scad>
-include <misc.scad>
+use <misc.scad>
 
 
 // bearing block for 2 bearings and a shaft through it
@@ -15,7 +15,7 @@ module bearing_block(second_hole = true){ // private
             cylinder(34, d=(bearing_od+2*pipe_wall_thick)); // outer cylinder
             translate([-8,-15,-1]) cube([height, 30, 36], false); // cutoff part of cylinder
         }
-        translate([0,0,2]) cylinder(30, d=bearing_od+2*hole_tolerance);
+        translate([0,0,2]) cylinder(30, d=bearing_od+2*radius_tolerance);
         translate([0,0,-1]) cylinder(shaft_height, d=9); // shaft hole
     }
 }

@@ -2,7 +2,8 @@
 include <BOSL2/std.scad> // tube()
 include <bb24const.scad>
 
-beam_id = bearing_od + 2*pipe_wall_thick + 2*hole_tolerance;
+bl = 54; // beam length
+beam_id = bearing_od + 2*pipe_wall_thick + 2*radius_tolerance;
 beam_od = beam_id+2*pipe_wall_thick;
 
 
