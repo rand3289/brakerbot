@@ -1,10 +1,10 @@
 // generic public modules
-
 module t(x,y,z){           translate([x,y,z]) children(); } // translate
 module r(ax,ay,az){        rotate([ax,ay,az]) children(); } // rotate
-module b(x,y,z){           cube([x,y,z],center=true); } // block (cube)
+module b(x,y,z){           cube([x,y,z],center=true); }     // block (cube)
 module c(height,diameter){ cylinder(h=height, d=diameter, center=true); } // cylinder
-module s(diameter){        sphere(d=diameter); } // sphere
+module s(diameter){        sphere(d=diameter); }            // sphere
+// comments after modules show up in vscode tooltips
 
 /*
 module flipx(){ rotate([90,0,0]) children(); }
