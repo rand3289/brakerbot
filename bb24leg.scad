@@ -63,8 +63,26 @@ module pushrod(){ // public
     }
 }
 
+
+module peg(){
+    $fn = 32; // make the holes nice and round
+    difference(){
+        union(){
+            c(16.4,8);
+            t(0,0,8.8) c(1.2,12);
+        }
+        c(30,3);
+    }
+    difference(){
+        t(0,0,-10) c(1.2,12);
+        c(30,3);
+    }
+}
+
+
 // local file debugging only
 t(-137,0,-12) r(90,0,0) shin();
 t(107, 0, 30) r(180,0,0) hip();
 t(-16, 0, 14) pushrod();
 thigh();
+t(0,0,-20) r(90,0,0) peg();
