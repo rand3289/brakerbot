@@ -39,7 +39,7 @@ module hip(){ // public
     difference(){
         union(){
             b(64, 58, 16);
-            t(-32, 0, 4) b(16, 8, 24);
+            t(-32, 0, 4) b(16, 8, 24); // TODO: in the original this was a cross not a T
             t(-32,0,16) r(90,0,0) c(8,16);
         }
         t(8, 0, 0)  b(64, 50.4, 18);

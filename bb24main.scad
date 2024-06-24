@@ -1,9 +1,11 @@
 // Breaker Bot 2024 toandrey(at)yahoo(dot)com
 //
-// TODO: test a single leg by putting the "beam" hoops for the other leg onto some vertical pole
-// TODO: will the gears fit within "fw" parameter - measure gear width
+// Test a single leg by putting the "beam" hoops for the other leg onto a vertical pole.  Allowing the leg to jump.
+//
 // TODO: add tolerances to all holes
-// TODO: gears with a disk on the bottom have about 1.5mm overhang and will not print as is. Add support
+// TODO: will the gears fit within "fw" parameter - measure gear width
+// TODO: how do we put the hip and thigh onto the 12mm axels during assembly?
+// TODO: how to attach the brakes
 
 include <bb24const.scad>
 use <misc.scad>
