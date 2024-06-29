@@ -21,16 +21,27 @@ module bbeam(len){ // private
 }
 
 
-module brake() { // public
+module brake_internals() { // public
     bbeam(disk_spacing+26);
     t(0,0,20.8) r(180,0,0) bbeam(disk_spacing);
     t(0,0,10.4) r(90,0,0) spur_gear(pitch=rp_pitch, teeth=10, thickness=thick);
 }
 
 
-brake();
-// create a panel that the brake will attach to
-color("green") union(){
-    t(0,9+thick/2,-3) b(disk_spacing+20,18,16);
-    t(0,2+thick/2,8+7) b(16,4,22);
+module brake_body(){ // public
+    difference(){
+        t(0,0,10.4) b(16,thick+8,39);
+        t(0,0,10.4) b(18,thick+0.2,31);
+    }
 }
+
+
+brake_internals();
+brake_body();
+
+// a place where the brake will attach to
+%    t(0,8.1+thick/2,0) b(disk_spacing+20,16,8);
+
+// axle marker
+$fn=32;
+color("green") t(0,0,10.4) r(90,0,0) c(20,4.2);
