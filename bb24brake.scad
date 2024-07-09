@@ -43,6 +43,7 @@ brake_body();
 // a place where the brake will attach to
 %    t(0,8.1+thick/2,0) b(disk_spacing+20,16,8);
 %    t(0,8.1+thick/2,-44) b(16,16,80);
+%    t(0, 10.6, -35) b(36, 16, 64);
 
 // axle marker
 $fn=32;
@@ -57,4 +58,4 @@ module servo(){
 
 t(0,6.1,-36) r(-90,180,180) servo();
 sg_teeth=16;
-t(0,-9.2,-23) r(90,180/sg_teeth,0) spur_gear(pitch=rp_pitch, teeth=sg_teeth, thickness=thick);
+t(0,-9.2,-23) r(90,180/sg_teeth,0) spur_gear(pitch=rp_pitch, teeth=sg_teeth, thickness=thick); // gear on the servo
