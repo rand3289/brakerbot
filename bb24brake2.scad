@@ -37,21 +37,31 @@ module brake_body(){ // public
 }
 
 
-module servo(){
+module servo(){ // public
     union(){
-        b(20,46,31); // standard servo footprint
-        t(0,14,17) c(8,4); // shaft
+        b(20,41,36); // standard servo body
+        t(0,0,8.25) b(20, 53.75, 2.5); // rim
+        t(0,14,19.8) c(3.5,12.9);
+        t(0,14,21.5) c(7,5.65); // shaft 7mm above top
     }
 }
 
 
-brake_body();
-color("red") brake_internals();
-// axle marker
-// color("green") t(0,0,10.4) r(90,0,0) c(20,4.2);
-
 // a place where the brake will attach to
-%t(0,8.1+thick/2,-5) b(disk_spacing+20,16,8);
+%t(0,8.1+thick/2,-5.1) b(disk_spacing+20,16,8);
 
-color("yellow") t(0, 11, 25) b(32, 8.5, 56);
-t(0, 22.25, 24.5) r(90,180,0) servo();
+difference(){
+    union(){
+        brake_body();
+        t(0, 11, 25) b(32, 8.5, 56);    // servo collar
+    }
+    t(0, 10, 10.4) r(90,0,0) c(20, 13.1); // servo hole
+    t(0,14.24,24.5) b(20, 15, 41); // standard servo body hole
+}
+t(0, 19.25, 25) r(90,0,0) sq_tube(32, 56, 4, 0.3); // support
+t(0, 19.25, 24.5) r(90,0,0) sq_tube(20.6, 41.6, 4, 0.3); // support
+t(0,13,10.4) r(90,0,0) tube(h=14, od=13.6,id=13);   // support
+
+//color("red") brake_internals();
+%t(0, 24.7, 24.5) r(90,180,0) servo();
+//color("green") t(0,0,10.4) r(90,0,0) c(20,4.2); // axle marker
