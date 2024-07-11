@@ -1,4 +1,5 @@
 // Breaker Bot 2024 toandrey(at)yahoo(dot)com
+// designed to be 3D printed with 0.3mm layer height
 include <BOSL2/std.scad>
 include <BOSL2/gears.scad>
 use <misc.scad>
@@ -65,3 +66,21 @@ t(0,13,10.4) r(90,0,0) tube(h=14, od=13.6,id=13);   // support
 //color("red") brake_internals();
 %t(0, 24.7, 24.5) r(90,180,0) servo();
 //color("green") t(0,0,10.4) r(90,0,0) c(20,4.2); // axle marker
+
+
+%t(0,-50,0)
+// alternative brake block
+union(){
+difference(){
+    b(26, 32, 66);
+    t(7.4, 0, -14) b(5.2, 34, 31); // brake arm hole
+    t(-15, 0, 0)   b(36, 20.4, 41); // servo hole
+    t(-12,0,0)     b(12, 20.4, 53.75); // servo rim
+    t(10, 0, 20)   b(15, 34, 30); // corner cutout
+    t(-4, 0, -14)  r(0, 90, 0) c(26, 13); // servo shaft hole
+}
+t(3.15, 0, -14) b(0.3,13,13); // print support
+}
+
+
+// Theoretically flat frames can be cut out of layers and laminated together
