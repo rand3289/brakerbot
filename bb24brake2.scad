@@ -47,7 +47,7 @@ module servo(){ // public
     }
 }
 
-
+/*
 // a place where the brake will attach to
 %t(0,8.1+thick/2,-5.1) b(disk_spacing+20,16,8);
 
@@ -66,21 +66,23 @@ t(0,13,10.4) r(90,0,0) tube(h=14, od=13.6,id=13);   // support
 //color("red") brake_internals();
 %t(0, 24.7, 24.5) r(90,180,0) servo();
 //color("green") t(0,0,10.4) r(90,0,0) c(20,4.2); // axle marker
+*/
 
 
-%t(0,-50,0)
-// alternative brake block
-union(){
-difference(){
-    b(26, 32, 66);
-    t(7.4, 0, -14) b(5.2, 34, 31); // brake arm hole
-    t(-15, 0, 0)   b(36, 20.4, 41); // servo hole
-    t(-12,0,0)     b(12, 20.4, 53.75); // servo rim
-    t(10, 0, 20)   b(15, 34, 30); // corner cutout
-    t(-4, 0, -14)  r(0, 90, 0) c(26, 13); // servo shaft hole
-}
-t(3.15, 0, -14) b(0.3,13,13); // print support
-}
 
+// TODO: add servo wire hole
+// TODO: add 4 screw holes holding the servo
+// TODO: add a notch between screw holes
+module brake_block(){ // public
+    difference(){
+        b(26, 28, 66);
+        t(7.4, 0, -14) b(5.2, 34, 31); // brake arm hole
+        t(-16.7, 0, 0) b(36, 20.4, 41); // servo hole
+        t(-20.2, 0, 0) b(36, 20.4, 53.75); // servo rim
+        t(8.8, 0, 20)  b(15, 34, 30); // corner cutout
+        t(3.35, 0, -14)  r(0, 90, 0) c(3.5, 13); // servo shaft hole
+        // servo shaft hole is printed with a 0.3mm membrane as a print support
+    }
+} // brake_block
 
-// Theoretically flat frames can be cut out of layers and laminated together
+t(0,-50,0) brake_block();
