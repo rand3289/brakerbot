@@ -49,16 +49,22 @@ module servo(){ // public
 
 brake_internals();
 brake_body();
-t(0,15,-36) r(-90,180,180) servo();
+%t(0,15,-37) r(-90,180,180) servo();
 color("green") t(0,0,10.4) r(90,0,0) c(20,4.2); // axle marker
-sg_teeth=16;
-t(0,-9.2,-23) r(90,180/sg_teeth,0) spur_gear(pitch=rp_pitch, teeth=sg_teeth, thickness=thick); // gear on the servo
+sg_teeth=18;
+t(0,-9.2,-24) r(90,180/sg_teeth,0) spur_gear(pitch=rp_pitch, teeth=sg_teeth, thickness=thick); // gear on the servo
 t(0,-9.2,10.4) r(90,0,0) spur_gear(pitch=rp_pitch, teeth=36, thickness=thick); // gear on top of brake
+// TODO: add holes in gears
+// TODO: add print supports for brake_body()
+// TODO: add holes for mounting a servo
 
 // a place where the brake will attach to
-%    t(0,8.1+thick/2,0) b(disk_spacing+20,16,8);
-%    t(0,8.1+thick/2,-44) b(16,16,80);
-%    t(0, 10.6, -35) b(28, 16, 64);
-
-
-
+difference(){
+    union(){
+        t(0,8.1+thick/2,0) b(70,16,8);
+        t(0,8.1+thick/2,-44) b(16,16,80);
+        t(0, 10.6, -35) b(28, 16, 64);
+    }
+    t(0,10,-37.2) b(20.4,18,41.4);
+    t(0,3.1,-37.2) b(20.4,10,55);
+}
