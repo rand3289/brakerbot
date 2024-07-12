@@ -37,18 +37,6 @@ module brake_body(){ // public
 }
 
 
-brake_internals();
-brake_body();
-
-// a place where the brake will attach to
-%    t(0,8.1+thick/2,0) b(disk_spacing+20,16,8);
-%    t(0,8.1+thick/2,-44) b(16,16,80);
-%    t(0, 10.6, -35) b(36, 16, 64);
-
-// axle marker
-$fn=32;
-color("green") t(0,0,10.4) r(90,0,0) c(20,4.2);
-
 module servo(){ // public
     union(){
         b(20,41,36); // standard servo body
@@ -58,8 +46,19 @@ module servo(){ // public
     }
 }
 
-t(0,6.1,-36) r(-90,180,180) servo();
+
+brake_internals();
+brake_body();
+t(0,15,-36) r(-90,180,180) servo();
+color("green") t(0,0,10.4) r(90,0,0) c(20,4.2); // axle marker
 sg_teeth=16;
 t(0,-9.2,-23) r(90,180/sg_teeth,0) spur_gear(pitch=rp_pitch, teeth=sg_teeth, thickness=thick); // gear on the servo
 t(0,-9.2,10.4) r(90,0,0) spur_gear(pitch=rp_pitch, teeth=36, thickness=thick); // gear on top of brake
+
+// a place where the brake will attach to
+%    t(0,8.1+thick/2,0) b(disk_spacing+20,16,8);
+%    t(0,8.1+thick/2,-44) b(16,16,80);
+%    t(0, 10.6, -35) b(28, 16, 64);
+
+
 
