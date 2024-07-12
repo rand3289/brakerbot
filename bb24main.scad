@@ -13,6 +13,7 @@ use <bb24bracket.scad>
 use <bb24frame.scad>
 use <bb24leg.scad>
 use <bb24misc.scad>
+use <bb24brake2.scad>
 
 
 // operator module "TranslateRotate" to place a component on the x-y plane
@@ -40,7 +41,7 @@ if ($preview) { // do not show this stuff during rendering
     tr(-24,0,0) color("yellow") shaft(34);
 } // if($preview)
 
-
+/*
 if($preview) { // F5 = preview, F6 = render
     translate([-16,-83,4]) bracket_connector();
 } else { // separate parts for printing when rendered
@@ -48,9 +49,16 @@ if($preview) { // F5 = preview, F6 = render
 }
 bracket();
 translate([fw+16+1,0,0]) bracket();
+*/
 
+union(){ // install brake_block into frame
+    difference(){
+        frame(); // main frame of the robot
+        t(27,-55,8) b(24,20,18); // hole for a brake_block()
+    }
+    t(27,-56,4.8) r(0,90,-90) brake_block();
+}
 
-frame(); // main frame of the robot
 if(!$preview){ // when rendering add print supports for hollow_shaft() in frame()
     translate([27,108,0]) sq_tube(6, 2, 3, 0.3);
     translate([27,64,0])  sq_tube(6, 2, 3, 0.3);

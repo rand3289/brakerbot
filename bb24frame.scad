@@ -54,30 +54,19 @@ module angle(){ // private
 }
 
 
-module frame_no_blocks(){ // private
-    difference(){
-        union(){
-            translate([fw/2,  0, 0]) sq_tube(fw,fl,16,8);
-            translate([fw/2,123,0]) rotate([0,0,-90]) cframe();
-            translate([fw/2,61,8]) rotate([0,90,-90]) tube(h=8, od=12, id=shaft_round+1);
-            translate([fw/2,111,8]) rotate([0,90,-90]) tube(h=8, od=12, id=shaft_round+1);
-            translate([53,22,0]) rotate([0,0,53]) angle();
-        }
-        // holes for attaching brakes
-        translate([23,-(fl/2-4),-1]) cylinder(18, d=3);
-        translate([31,-(fl/2-4),-1]) cylinder(18, d=3);
-        translate([27,-(fl/2-10),8]) rotate([90,0,0]) cylinder(12, d=3);
-    }
-}
-
-
 module frame() { // public
     bearing_block_install(8,0,0,false)
     bearing_block_install(46,0,180)
     bearing_block_install(fw/2,57,90) // shared
     bearing_block_install(fw/2,115,-90,false)
     bearing_block_install(49,86,180,false)
-    frame_no_blocks();
+    union(){
+        translate([fw/2,  0, 0]) sq_tube(fw,fl,16,8);
+        translate([fw/2,123,0]) rotate([0,0,-90]) cframe();
+        translate([fw/2,61,8]) rotate([0,90,-90]) tube(h=8, od=12, id=shaft_round+1);
+        translate([fw/2,111,8]) rotate([0,90,-90]) tube(h=8, od=12, id=shaft_round+1);
+        translate([53,22,0]) rotate([0,0,53]) angle();
+    }
 }
 
 
