@@ -3,12 +3,13 @@ include <BOSL2/std.scad>
 include <BOSL2/gears.scad>
 use <misc.scad>
 
+$fn=32;
 rp_pitch = 4; // rack and pinion pitch
 disk_spacing = 52;
 thick = 5;
 
 
-module brake_beam(len){ // private
+module brake_arm(len){ // private
     union(){
         difference(){
             b(len,thick, 10);
@@ -22,10 +23,9 @@ module brake_beam(len){ // private
 
 
 module brake_internals() { // public
-    brake_beam(disk_spacing+26);
-    t(0,0,20.8) r(180,0,0) brake_beam(disk_spacing);
+    brake_arm(disk_spacing+26);
+    t(0,0,20.8) r(180,0,0) brake_arm(disk_spacing);
     t(0,0,10.4) r(90,0,0) spur_gear(pitch=rp_pitch, teeth=10, thickness=thick);
-    t(0,-9.2,10.4) r(90,0,0) spur_gear(pitch=rp_pitch, teeth=36, thickness=thick);
 }
 
 
@@ -49,13 +49,17 @@ brake_body();
 $fn=32;
 color("green") t(0,0,10.4) r(90,0,0) c(20,4.2);
 
-module servo(){
+module servo(){ // public
     union(){
-        b(20,46,31); // standard servo footprint
-        t(0,14,17) c(8,4); // shaft
+        b(20,41,36); // standard servo body
+        t(0,0,8.25) b(20, 53.75, 2.5); // rim
+        t(0,14,19.8) c(3.5,12.9);
+        t(0,14,21.5) c(7,5.65); // shaft 7mm above top
     }
 }
 
 t(0,6.1,-36) r(-90,180,180) servo();
 sg_teeth=16;
 t(0,-9.2,-23) r(90,180/sg_teeth,0) spur_gear(pitch=rp_pitch, teeth=sg_teeth, thickness=thick); // gear on the servo
+t(0,-9.2,10.4) r(90,0,0) spur_gear(pitch=rp_pitch, teeth=36, thickness=thick); // gear on top of brake
+
