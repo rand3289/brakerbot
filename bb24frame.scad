@@ -2,6 +2,7 @@
 include <BOSL2/std.scad> // tube()
 include <bb24const.scad>
 use <misc.scad>
+use <bb24brake2.scad>
 
 
 // bearing block for 2 bearings and a shaft through it
@@ -54,7 +55,7 @@ module angle(){ // private
 }
 
 
-module frame() { // public
+module frame() { // private
     bearing_block_install(8,0,0,false)
     bearing_block_install(46,0,180)
     bearing_block_install(fw/2,57,90) // shared
@@ -69,5 +70,15 @@ module frame() { // public
     }
 }
 
+module frame_wbrake(){ // public
+    union(){ // install brake_block into frame
+        difference(){
+            frame(); // main frame of the robot
+            t(27,-55,8) b(24,20,18); // hole for a brake_block()
+        }
+        t(27,-56,4.8) r(0,90,-90) brake_block();
+    }
+}
 
-frame();
+
+frame_wbrake();
