@@ -43,12 +43,12 @@ if ($preview) { // do not show this stuff during rendering
 
 
 if($preview) { // F5 = preview, F6 = render
-    translate([-16,-83,4]) bracket_connector();
+    t(27, -100, 8) r(0,90,0) bracket_connector();
 } else { // separate parts for printing when rendered
-    translate([-16,-83,24]) bracket_connector();
+    t(27, -100, 24) r(0,90,0) bracket_connector();
 }
-bracket();
-translate([fw+16+1,0,0]) bracket();
+t(-9,-100,8) r(0,90,0) bracket();
+t(63,-100,8) r(0,90,0) bracket();
 
 
 frame_wbrake();
