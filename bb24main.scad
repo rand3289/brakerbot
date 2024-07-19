@@ -43,23 +43,23 @@ if ($preview) { // do not show this stuff during rendering
 
 
 if($preview) { // F5 = preview, F6 = render
-    t(27, -100, 8) r(0,90,0) bracket_connector();
+    t(27, -100, 8)  r(0,90,0) bracket_connector();
 } else { // separate parts for printing when rendered
     t(27, -100, 24) r(0,90,0) bracket_connector();
 }
-t(-9,-100,8) r(0,90,0) bracket();
-t(63,-100,8) r(0,90,0) bracket();
+t(-9, -100, 8) r(0,90,0) bracket();
+t(63, -100, 8) r(0,90,0) bracket();
 
 
 frame_wbrake();
 if(!$preview){ // when rendering add print supports for hollow_shaft() in frame()
-    translate([27,108,0]) sq_tube(6, 2, 3, 0.3);
-    translate([27,64,0])  sq_tube(6, 2, 3, 0.3);
+    t(27, 108, 0) sq_tube(6, 2, 3, 0.3);
+    t(27,  64, 0) sq_tube(6, 2, 3, 0.3);
 }
 
 
-translate([-120,86,-6]) pushrod();
-translate([-104,86,8])  thigh();
-translate([-241,86,20]) rotate([-90,0,0]) shin();
-translate([3,86,-22])   rotate([0,0,0])   hip_w_brake();
-translate([-170,86,8])  rotate([90,0,0])  peg();
+t(-120, 86, -6) pushrod();
+t(-104, 86, 8)  thigh();
+t(-241, 86, 20) r(-90,0,0) shin();
+t(3, 86, -22)   r(180,0,0) hip_w_brake();
+t(-170, 86, 8)  r(90,0,0)  peg();
