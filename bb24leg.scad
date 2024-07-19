@@ -1,5 +1,6 @@
 // Breaker Bot 2024 toandrey(at)yahoo(dot)com
 use <misc.scad>
+use <bb24brake2.scad>
 
 
 module shin(){ // public
@@ -36,15 +37,17 @@ module thigh(){ // public
 
 
 module hip(){ // public
+    $fn=64;
     difference(){
         union(){
             b(64, 58, 16);
-            t(-32, 0, 4) b(16, 8, 24); // TODO: in the original this was a cross not a T
-            t(-32,0,16) r(90,0,0) c(8,16);
+            t(-70, 0, -1.75) b(12, 8, 12.5);
+            t(-76,0,0) r(90,0,0) c(8,16);
         }
         t(8, 0, 0)  b(64, 50.4, 18);
         t(24, 0, 0) r(-90, 0, 0) c(64, 12.4);
-        t(-32,0,16) r(-90, 0, 0) c(20, 8.4);
+        t(-76,0,0) r(-90, 0, 0) c(20, 8.4);
+        b(70,24,18); // cut out a place for brake_block()
     }
 }
 
@@ -81,9 +84,17 @@ module peg(){
 }
 
 
+module hip_w_brake(){
+    union(){
+        hip();
+        t(-31,0,3.2) r(0,-90,0) brake_block();
+    }
+}
+
+
 // local file debugging only
 t(-137,0,-12) r(90,0,0) shin();
-t(107, 0, 30) r(180,0,0) hip();
+t(107, 0, 50) r(180,0,0) hip_w_brake();
 t(-16, 0, 14) pushrod();
 thigh();
 t(0,0,-20) r(90,0,0) peg();
