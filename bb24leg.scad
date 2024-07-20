@@ -1,5 +1,6 @@
 // Breaker Bot 2024 toandrey(at)yahoo(dot)com
 use <misc.scad>
+use <bb24brake.scad>
 use <bb24brake2.scad>
 
 
@@ -103,5 +104,5 @@ module hip_w_brake(){
 t(-137,0,-12) r(90,0,0) shin();
 t(107, 0, 30) hip_w_brake();
 t(-16, 0, 14) pushrod();
-thigh();
+t(0,30,0) brake_install() t(0, 10.6, -80) r(90,-90,0) thigh();
 t(0,0,-20) r(90,0,0) peg();

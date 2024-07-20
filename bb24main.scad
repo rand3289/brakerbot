@@ -13,6 +13,7 @@ use <bb24bracket.scad>
 use <bb24frame.scad>
 use <bb24leg.scad>
 use <bb24misc.scad>
+use <bb24brake.scad>
 use <bb24brake2.scad>
 
 
@@ -59,7 +60,7 @@ if(!$preview){ // when rendering add print supports for hollow_shaft() in frame(
 
 
 t(-120, 86, -6) pushrod();
-t(-104, 86, 8)  thigh();
+t(-22, 88, 40) r(90,0,90) brake_install() t(0, 10.6, -80) r(90,-90,0) thigh();
 t(-241, 86, 20) r(-90,0,0) shin();
 t(3, 86, -22)   r(180,0,0) hip_w_brake();
 t(-170, 86, 8)  r(90,0,0)  peg();
