@@ -23,7 +23,7 @@ module tr(x, y, az){
 }
 
 
-if ($preview) { // do not show this stuff during rendering
+if ($preview && false) { // do not show this stuff during rendering
     // These are a bunch of gears, disks, shafts and bearing for visualization
     tr(12.5,0,0)  dgear();
     tr(41,0,180)  dgear();
@@ -42,7 +42,7 @@ if ($preview) { // do not show this stuff during rendering
     tr(-24,0,0) color("yellow") shaft(34);
 } // if($preview)
 
-
+/*
 if($preview) { // F5 = preview, F6 = render
     t(27, -100, 8)  r(0,90,0) bracket_connector();
 } else { // separate parts for printing when rendered
@@ -50,7 +50,7 @@ if($preview) { // F5 = preview, F6 = render
 }
 t(-9, -100, 8) r(0,90,0) bracket();
 t(63, -100, 8) r(0,90,0) bracket();
-
+*/
 
 frame_wbrake();
 if(!$preview){ // when rendering add print supports for hollow_shaft() in frame()
@@ -59,8 +59,8 @@ if(!$preview){ // when rendering add print supports for hollow_shaft() in frame(
 }
 
 
-t(-120, 86, -6) pushrod();
 t(-22, 88, 40) r(90,0,90) brake_install() t(0, 10.6, -80) r(90,-90,0) thigh();
-t(-241, 86, 20) r(-90,0,0) shin();
 t(3, 86, -22)   r(180,0,0) hip_w_brake();
+t(-120, 86, -6) pushrod();
+t(-241, 86, 20) r(-90,0,0) shin();
 t(-170, 86, 8)  r(90,0,0)  peg();
