@@ -4,31 +4,7 @@ include <BOSL2/std.scad>
 include <BOSL2/gears.scad>
 use <misc.scad>
 // use <bb24brake.scad> // for servo() and brake_internals()
-
 $fn=32;
-
-
-/* This is the old design
-
-// a place where the brake will attach to
-%t(0,8.1+thick/2,-5.1) b(disk_spacing+20,16,8);
-
-difference(){
-    union(){
-        brake_body();
-        t(0, 11, 25) b(32, 8.5, 56);    // servo collar
-    }
-    t(0, 10, 10.4) r(90,0,0) c(20, 13.1); // servo hole
-    t(0,14.24,24.5) b(20, 15, 41); // standard servo body hole
-}
-t(0, 19.25, 25) r(90,0,0) sq_tube(32, 56, 4, 0.3); // support
-t(0, 19.25, 24.5) r(90,0,0) sq_tube(20.6, 41.6, 4, 0.3); // support
-t(0,13,10.4) r(90,0,0) tube(h=14, od=13.6,id=13);   // support
-
-//color("red") brake_internals();
-%t(0, 24.7, 24.5) r(90,180,0) servo();
-//color("green") t(0,0,10.4) r(90,0,0) c(20,4.2); // axle marker
-*/
 
 
 module brake_block(){ // public

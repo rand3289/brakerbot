@@ -29,20 +29,20 @@ module brake_internals() { // public
 }
 
 
-module brake_body(){ // public
-    difference(){
-        t(0,0,10.4) b(16,thick+8,39);
-        t(0,0,10.4) b(18,thick+0.2,31);
-    }
-}
-
-
 module servo(){ // public
     union(){
         b(20,41,36); // standard servo body
         t(0,0,8.25) b(20, 53.75, 2.5); // rim
         t(0,14,19.8) c(3.5,12.9);
         t(0,14,21.5) c(7,5.65); // shaft 7mm above top
+    }
+}
+
+/*
+module brake_body(){ // public
+    difference(){
+        t(0,0,10.4) b(16,thick+8,39);
+        t(0,0,10.4) b(18,thick+0.2,31);
     }
 }
 
@@ -59,6 +59,7 @@ module brake_attachment(){ // private
     t(0,3.1,-37.2) b(20.4,10,55);
   }
 }
+*/
 
 module brake_install(){ // public
   difference(){
@@ -71,7 +72,12 @@ module brake_install(){ // public
     t(0,10,-37.2) b(20.4,18,41.4);
     t(0,3.1,-37.2) b(20.4,10,55);
     t(0,0,10.4) b(18,thick+0.2,31); // arm hole
-    t(0,-0.3,9.5) r(-90,0,0) c(13,8); // hole for an axle
+    t(0,-0.3,9.5) r(-90,0,0) c(13,8); // axle hole
+    // holes for mounting servos
+    t( 5, 14, -61.5) r(90,0,0) c(18, 4.1);
+    t(-5, 14, -61.5) r(90,0,0) c(18, 4.1);
+    t( 5, 14, -14)   r(90,0,0) c(18, 4.1);
+    t(-5, 14, -14)   r(90,0,0) c(18, 4.1);
   }
 }
 
