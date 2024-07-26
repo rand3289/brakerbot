@@ -38,28 +38,6 @@ module servo(){ // public
     }
 }
 
-/*
-module brake_body(){ // public
-    difference(){
-        t(0,0,10.4) b(16,thick+8,39);
-        t(0,0,10.4) b(18,thick+0.2,31);
-    }
-}
-
-
-// a place where the brake will attach to
-module brake_attachment(){ // private
-  difference(){
-    union(){
-        t(0,8.1+thick/2,0) b(70,16,8);
-        t(0,8.1+thick/2,-44) b(16,16,80);
-        t(0, 10.6, -35) b(28, 16, 64);
-    }
-    t(0,10,-37.2) b(20.4,18,41.4);
-    t(0,3.1,-37.2) b(20.4,10,55);
-  }
-}
-*/
 
 module brake_install(){ // public
   difference(){
@@ -83,8 +61,6 @@ module brake_install(){ // public
 
 
 /*
-// brake_body();
-// brake_attachment();
 brake_internals();
 t(0,15,-37) r(-90,180,180) servo();
 color("green") t(0,0,10.4) r(90,0,0) c(20,4.2); // axle marker
@@ -100,7 +76,4 @@ brake_install()
 }
 
 // TODO: add holes in gears
-// TODO: make sure holes have bottoms as supports
-// TODO: add print supports for brake_body()
-// TODO: add holes for mounting a servo
 // TODO: make sure both brakes mash up together on axle
