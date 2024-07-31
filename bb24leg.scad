@@ -89,13 +89,15 @@ module hip_w_brake(){
     difference(){
         union(){
             hip();
-            t(-17,0,10.5) b(38,30,15); // middle part
+            difference(){
+                t(-17,0,10.5) b(38,30,15); // middle part
+                t(-39.32,0,0) r(0,45,0) b(16,32,16); // cut off the edge
+            }
             t(-31,-40,3.2) r(0,-90,0) brake_block();
             t(-2,0,-8) sq_tube(8,30,12,0.3); // print support
         }
         t(-17, 0, 10.6) b(31, 34, 5.2); // brake arm hole
         t(-17, 0, 11) c(18, 8);
-        // TODO: fix overhang around eylet
     }
 }
 
