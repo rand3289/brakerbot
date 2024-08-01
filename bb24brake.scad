@@ -44,13 +44,16 @@ module brake_install(){ // public
     union(){
         children();
         t(0, 10.6, -35) b(28, 16, 64);
-        t(0,0,10.4) b(16,thick+8,39); // arm part
-        t(0, 18.5, 27.4) r(90,0,0) sq_tube(16, 5, 12, 0.3); // print support
+        difference(){
+            t(0,0,10.4) b(16,thick+8,39); // arm part
+            t(0,0,10.4) b(18,thick+0.2,31); // arm hole
+        }
+        t(0, 18.5, 15.4) r(90,0,0) sq_tube(16, 29, 12, 0.3); // print support
+        t(0,6.5,9.5) r(-90,0,0) tube(h=24,id=8,od=8.6, center=true); // axle hole print support
     }
     t(0,10,-37.2) b(20.4,18,41.4);
     t(0,3.1,-37.2) b(20.4,10,55);
-    t(0,0,10.4) b(18,thick+0.2,31); // arm hole
-    t(0,-0.3,9.5) r(-90,0,0) c(13,8); // axle hole
+    t(0,-0.3,9.5) r(-90,0,0) c(15,8); // axle hole
     // holes for mounting servos
     t( 5, 14, -61.5) r(90,0,0) c(18, 4.1);
     t(-5, 14, -61.5) r(90,0,0) c(18, 4.1);
